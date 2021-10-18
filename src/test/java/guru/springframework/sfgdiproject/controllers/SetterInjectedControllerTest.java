@@ -6,16 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PropertyInjectedControllerTest {
+class SetterInjectedControllerTest {
 
-    PropertyInjectedController controller;
+    SetterInjectedController controller;
 
     @BeforeEach
-    public void initEach(){
-        System.out.println("Before Each initEach() method called");
-        controller = new PropertyInjectedController();
-
-        controller.greetingService = new GreetingServiceImpl();
+    void setUp() {
+        controller = new SetterInjectedController();
+        controller.setGreetingService(new GreetingServiceImpl());
     }
 
     @Test
