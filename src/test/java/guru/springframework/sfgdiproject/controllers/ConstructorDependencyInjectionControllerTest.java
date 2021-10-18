@@ -6,16 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PropertyInjectedControllerTest {
+class ConstructorDependencyInjectionControllerTest {
 
-    PropertyInjectedController controller;
+    ConstructorDependencyInjectionController controller;
 
     @BeforeEach
-    public void initEach(){
-        System.out.println("Before Each initEach() method called");
-        controller = new PropertyInjectedController();
-        // This is the least recommended approach of D.I.
-        controller.greetingService = new GreetingServiceImpl();
+    void setUp() {
+        // Notice here we are initiating using constructor
+        controller = new ConstructorDependencyInjectionController(new GreetingServiceImpl());
     }
 
     @Test
