@@ -1,10 +1,8 @@
 package guru.springframework.sfgdiproject.controllers;
 
-import guru.springframework.sfgdiproject.services.GreetingServiceImpl;
+import guru.springframework.sfgdiproject.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PropertyInjectedControllerTest {
 
@@ -15,7 +13,7 @@ class PropertyInjectedControllerTest {
         System.out.println("Before Each initEach() method called");
         controller = new PropertyInjectedController();
         // This is the least recommended approach of D.I.
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @Test
