@@ -14,14 +14,13 @@ public class SfgDiProjectApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SfgDiProjectApplication.class, args);
 
+		// This is how we ask Spring context for controller, the name should always start with lower case note that
 		MyController myController = (MyController) ctx.getBean("myController");
-		// This is how we ask Spring context for controller, the name start with lower case note that
+		System.out.println("-------- Primary Bean");
+		System.out.println(myController.sayHi());
 
-		String greeting = myController.sayHi();
-
-		System.out.println(greeting);
 		System.out.println("-------- Property");
-
+		// How to retrieve beans and use them
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
 
