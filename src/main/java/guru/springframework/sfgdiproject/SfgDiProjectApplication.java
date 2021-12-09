@@ -1,9 +1,6 @@
 package guru.springframework.sfgdiproject;
 
-import guru.springframework.sfgdiproject.controllers.ConstructorDependencyInjectionController;
-import guru.springframework.sfgdiproject.controllers.MyController;
-import guru.springframework.sfgdiproject.controllers.PropertyInjectedController;
-import guru.springframework.sfgdiproject.controllers.SetterInjectedController;
+import guru.springframework.sfgdiproject.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,10 +11,13 @@ public class SfgDiProjectApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SfgDiProjectApplication.class, args);
 
+		i18nController i18nController = (i18nController) ctx.getBean(("i18nController"));
+		System.out.println(i18nController.sayHello());
+
 		// This is how we ask Spring context for controller, the name should always start with lower case note that
-		MyController myController = (MyController) ctx.getBean("myController");
+		/*MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("-------- Primary Bean");
-		System.out.println(myController.sayHi());
+		System.out.println(myController.sayHi());*/
 
 		System.out.println("-------- Property");
 		// How to retrieve beans and use them
