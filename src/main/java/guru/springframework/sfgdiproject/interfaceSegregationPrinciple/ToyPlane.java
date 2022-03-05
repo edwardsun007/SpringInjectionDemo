@@ -6,12 +6,11 @@ public class ToyPlane implements Toy, Movable, Flyable {
 
     @Override
     public void fly() {
-        
+
     }
 
     @Override
     public void move() {
-
     }
 
     @Override
