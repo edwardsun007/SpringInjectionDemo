@@ -22,7 +22,7 @@ public class ElectricPowerSwitch implements Switch {
     public void press() {
         boolean checkOn = isOn();
         if (checkOn){
-            client.turnOff();
+            client.turnOff(); // Switch doesn't care about how client turn on or off, sweet !
         } else {
             client.turnOn();
             this.on = true;
