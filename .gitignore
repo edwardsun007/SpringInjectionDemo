@@ -33,3 +33,8 @@ build/
 
 ### VS Code ###
 .vscode/
+.idea/modules.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/sfg-di-project.iml
+.idea/vcs.xml
