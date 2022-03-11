@@ -1,5 +1,7 @@
 package guru.springframework.sfgdiproject.config;
 
+import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepository;
+import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdiproject.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +10,17 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository(){
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     // English i18nService is also the name for the Qualifier in i18nController
     @Profile("EN")
     @Bean
-    I18nEnglishGreetingService i18nService(){
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository){
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Profile({"ES", "default"})
