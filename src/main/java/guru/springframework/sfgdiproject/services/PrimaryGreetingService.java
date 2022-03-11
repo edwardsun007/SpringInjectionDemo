@@ -1,11 +1,7 @@
-package com.springframework.refactorPackage;
+package guru.springframework.sfgdiproject.services;
 
 import guru.springframework.sfgdiproject.services.GreetingService;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
 
-@Primary
-@Service
 public class PrimaryGreetingService implements GreetingService {
 
     @Override

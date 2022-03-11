@@ -12,14 +12,15 @@ public class SfgDiProjectApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SfgDiProjectApplication.class, args);
-
+		// Bean with profile
+		System.out.println("-------- i18n Bean");
 		i18nController i18nController = (i18nController) ctx.getBean(("i18nController"));
 		System.out.println(i18nController.sayHello());
 
 		// This is how we ask Spring context for controller, the name should always start with lower case note that
-		/*MyController myController = (MyController) ctx.getBean("myController");
+		MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("-------- Primary Bean");
-		System.out.println(myController.sayHi());*/
+		System.out.println(myController.sayHi());
 
 		System.out.println("-------- Property");
 		// How to retrieve beans and use them

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
  * */
 @Controller
 public class PropertyInjectedController {
-
+    // the qualifier is using the exact className of service with the first character as lowerCase
     @Qualifier("propertyInjectedGreetingService")
     @Autowired
     // injected interface is this one
