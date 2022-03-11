@@ -12,6 +12,12 @@ public class SfgDiProjectApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SfgDiProjectApplication.class, args);
+
+		// PetController
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("------ The Best Pet is -----");
+		System.out.println(petController.whichPetIsTheBest());
+
 		// Bean with profile
 		System.out.println("-------- i18n Bean");
 		i18nController i18nController = (i18nController) ctx.getBean(("i18nController"));

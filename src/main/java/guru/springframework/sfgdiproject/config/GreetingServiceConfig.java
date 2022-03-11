@@ -1,5 +1,7 @@
 package guru.springframework.sfgdiproject.config;
 
+import com.springframework.factoryPattern.PetService;
+import com.springframework.factoryPattern.PetServiceFactory;
 import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdiproject.services.*;
@@ -10,6 +12,25 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    // Create Bean for PetFactory
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
+
+    @Profile({"dog", "default"})
+    @Bean
+    PetService dogPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetServices("dog");
+    }
+
+    @Profile("cat")
+    @Bean // always make sure to annotate with Bean ! otherwise you see error that -- PetController required a bean of type 'com.springframework.factoryPattern.PetService' that could not be found.
+    PetService catPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetServices("cat");
+    }
+
 
     @Bean
     EnglishGreetingRepository englishGreetingRepository(){
