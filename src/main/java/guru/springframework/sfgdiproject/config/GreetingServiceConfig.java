@@ -13,10 +13,9 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class GreetingServiceConfig {
 
-    // Create Bean for PetFactory
     @Bean
-    PetServiceFactory petServiceFactory(){
-        return new PetServiceFactory();
+    PetServiceFactory petServiceFactory() {
+        return new PetServiceFactory(); // treated as import 3rd party Lib here and make this a bean
     }
 
     @Profile({"dog", "default"})
@@ -30,7 +29,6 @@ public class GreetingServiceConfig {
     PetService catPetService(PetServiceFactory petServiceFactory){
         return petServiceFactory.getPetServices("cat");
     }
-
 
     @Bean
     EnglishGreetingRepository englishGreetingRepository(){
