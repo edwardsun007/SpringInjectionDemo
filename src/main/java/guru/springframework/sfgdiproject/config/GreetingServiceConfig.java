@@ -5,11 +5,9 @@ import com.springframework.factoryPattern.PetServiceFactory;
 import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdiproject.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdiproject.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+@ImportResource("classpath:sfg-di-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -56,10 +54,11 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     };
     // Spring create object of ConstructorGreetingService and manage it as bean
-    @Bean
-    ConstructorGreetingService constructorGreetingService(){
-        return new ConstructorGreetingService();
-    }
+
+//    @Bean  Originally use Spring annotation the code is this, now it is using XML configuration
+//    ConstructorGreetingService constructorGreetingService(){
+//        return new ConstructorGreetingService();
+//    }
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
