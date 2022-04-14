@@ -1,6 +1,8 @@
 package guru.springframework.sfgdiproject;
 
 import guru.springframework.sfgdiproject.controllers.*;
+import guru.springframework.sfgdiproject.services.PrototypeBean;
+import guru.springframework.sfgdiproject.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -40,6 +42,22 @@ public class SfgDiProjectApplication {
 		System.out.println("-------- Constructor"); // remember the bean name convention should be lowercase first letter
 		ConstructorDependencyInjectionController constructorInjectedController = (ConstructorDependencyInjectionController) ctx.getBean("constructorDependencyInjectionController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("-------- Singleton Bean Scope:");
+		SingletonBean singleOne = ctx.getBean(SingletonBean.class);
+		System.out.println(singleOne.getMyScope());
+		SingletonBean singleTwe = ctx.getBean(SingletonBean.class);
+		System.out.println(singleTwe.getMyScope());
+		String testName = "Edward";
+		singleOne.setName(testName);
+		singleTwe.setName("Other");
+		System.out.println(singleOne.getName());
+
+		System.out.println("-------- Prototype Bean Scope:");
+		PrototypeBean protoOne = ctx.getBean(PrototypeBean.class);
+		System.out.println(protoOne.getMyScope());
+		PrototypeBean protoTwo = ctx.getBean(PrototypeBean.class);
+		System.out.println(protoTwo.getMyScope());
 
 	}
 
